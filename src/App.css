@@ -1,38 +1,240 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&display=swap');
+
+/* homepage */
+
+body, html, #root, .App {
+  height: 100%;
+  margin: 0;
+  font-family: 'Mitr', sans-serif;
+  background: #fff;
+  overflow-x: hidden;
+}
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  height: 100px;
+  z-index: 1000;
+  box-shadow: 0 1px 0 #e0e0e0;
+  display: flex;
+  align-items: center;
+}
+
+.header-content {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.header-title {
+  font-family: 'Mitr', sans-serif;
+  font-size: 3rem;
+  color: #111;
+  margin: 0;
+  font-weight: 400;
+}
+
+.header-nav {
+  display: flex;
+  gap: 60px;
+}
+
+.header-btn {
+  background: none;
+  border: none;
+  font-family: 'Mitr', sans-serif;
+  font-size: 1.4rem;
+  color: #888;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+.header-btn:hover, .header-btn.active {
+  color: #111;
+}
+
+.hero-section {
+  margin-top: 100px;
+  height: calc(100vh - 100px);
+  width: 100vw;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-headline {
+  color: #fff;
+  font-family: 'Mitr', sans-serif;
+  font-size: 3rem;
+  font-weight: 400;
   text-align: center;
+  z-index: 2;
+  margin: 0;
+  padding: 80px 0 0 0;
+  text-shadow: 0 2px 16px #000;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Adding a new class for the line */
+.header-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #333333;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.tools-section {
+  max-width: 1100px;
+  width: 100%;
+  margin: 60px auto 0 auto;
+  padding: 0 24px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.section-title {
+  font-family: 'Mitr', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin-bottom: 32px;
+  margin-top: 0;
+  border-top: 2px solid #222;
+  padding-top: 16px;
+}
+
+.tool-card {
+  border-top: 2px solid #222;
+  padding: 24px 0 12px 0;
+  margin-bottom: 0;
+}
+
+.tool-card-title {
+  font-family: 'Mitr', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.tool-card-title span {
+  font-weight: 700;
+  margin-left: 8px;
+}
+
+.tool-card-desc {
+  font-family: 'Mitr', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin-bottom: 18px;
+  color: #222;
+}
+
+.tool-card-link {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.tool-btn {
+  font-family: 'Mitr', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #1565c0;
+  background: #e3f0ff;
+  padding: 8px 22px;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 1px 2px rgba(21,101,192,0.07);
+}
+.tool-btn:hover {
+  background: #1565c0;
+  color: #fff;
+}
+
+.sets-apart-section {
+  max-width: 1200px;
+  width: 100%;
+  margin: 70px auto 0 auto;
+  padding: 0 24px 40px 24px;
+}
+
+.sets-apart-section .section-title {
+  text-align: center;
+  border-top: none;
+  border-bottom: 2px solid #222;
+  padding-bottom: 16px;
+  margin-bottom: 36px;
+}
+
+.sets-apart-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-left: 2px solid #222;
+  border-right: 2px solid #222;
+}
+
+.apart-card {
+  border-right: 2px solid #222;
+  border-bottom: 2px solid #222;
+  padding: 32px 24px 24px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 340px;
+}
+
+.apart-card:last-child {
+  border-right: none;
+}
+
+.apart-title {
+  font-family: 'Mitr', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.apart-desc {
+  font-family: 'Mitr', sans-serif;
+  font-size: 1.08rem;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 28px;
+  color: #222;
+}
+
+.apart-icon {
+  margin-top: auto;
+  min-height: 60px;
+  display: flex;
+  align-items: flex-end;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 900px) {
+  .sets-apart-grid {
+    grid-template-columns: 1fr;
+    border-left: none;
+    border-right: none;
   }
-  to {
-    transform: rotate(360deg);
+  .apart-card {
+    border-right: none;
+    border-bottom: 2px solid #222;
+  }
+  .apart-card:last-child {
+    border-bottom: none;
   }
 }
