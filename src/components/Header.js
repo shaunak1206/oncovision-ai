@@ -7,7 +7,10 @@ function Header() {
   return (
     <header className="site-header">
       <div className="header-content">
-        <h1 className="header-title">OncoVisionAI</h1>
+        <div className="header-left">
+          <img src="/oncoailogo.png" alt="OncoVisionAI Logo" className="header-logo" />
+          <h1 className="header-title" onClick={() => navigate('/')}>OncoVisionAI</h1>
+        </div>
         <nav className="header-nav">
           <button className="header-btn" onClick={() => navigate('/')}>Home</button>
           <button className="header-btn" onClick={() => navigate('/models')}>Models</button>

@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useRef, useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import '../App.css';
 
 const diseases = [
@@ -16,9 +16,24 @@ const diseases = [
 
 export default function Models() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [form, setForm] = useState({ name: '', email: '', desc: '', file: null, image: null });
   const fileInput = useRef();
   const imageInput = useRef();
+  const formRef = useRef(null);
+
+  useEffect(() => {
+    // Scroll to the top on page load/route change if no hash is present
+    if (location.pathname === '/models' && !location.hash) {
+      window.scrollTo(0, 0);
+    } else if (location.pathname === '/models' && location.hash === '#submit-form' && formRef.current) {
+       // Scroll to the form if hash is #submit-form and pathname is /models
+       const timer = setTimeout(() => {
+         formRef.current.scrollIntoView({ behavior: 'smooth' });
+       }, 0); // Use 0ms delay
+       return () => clearTimeout(timer);
+    }
+  }, [location.pathname, location.hash]); // Trigger when the pathname or hash changes
 
   const handleChange = e => {
     const { name, value, files } = e.target;
@@ -51,7 +66,13 @@ export default function Models() {
           <button
             className="model-card"
             key={disease.path}
-            onClick={() => navigate(`/models/${disease.path}`)}
+            onClick={() => {
+              if (disease.name === 'Lung Cancer') {
+                navigate('/model/lung-cancer');
+              } else {
+                navigate(`/models/${disease.path}`);
+              }
+            }}
             tabIndex={0}
             aria-label={disease.name}
           >
@@ -59,7 +80,7 @@ export default function Models() {
           </button>
         ))}
       </div>
-      <form className="model-submit-form" onSubmit={handleSubmit} encType="multipart/form-data">
+      <form className="model-submit-form" onSubmit={handleSubmit} encType="multipart/form-data" id="submit-form" ref={formRef}>
         <div className="model-form-title">Submit Your Own Models.</div>
         <input
           className="model-form-input"

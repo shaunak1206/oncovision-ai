@@ -29,6 +29,30 @@ const posts = [
   }
 ];
 
+const communities = [
+  {
+    id: 'cancer-research-collective',
+    image: '/cancerresearchcollectiveimg.png',
+    name: 'Cancer Research Collective',
+    creator: 'Dr. Liam Hayes',
+    members: '15.3k'
+  },
+  {
+    id: 'neurohealth-innovation',
+    image: '/neurohealthinnovationimg.png',
+    name: 'NeuroHealth Innovation',
+    creator: 'Dr. Sophia Grant',
+    members: '4.9k'
+  },
+  {
+    id: 'chronic-care-network',
+    image: '/chronicnetworkimg.png',
+    name: 'Chronic Care Network',
+    creator: 'Dr. Emily Carter',
+    members: '9.6k'
+  }
+];
+
 export default function Forum() {
   const navigate = useNavigate();
   return (
@@ -58,6 +82,36 @@ export default function Forum() {
             </div>
           </div>
         ))}
+      </div>
+      <div className="community-section">
+        <div className="community-header">
+          <div className="community-title">Find Your Community.</div>
+          <div className="community-see-more">→ See More</div>
+        </div>
+        <div className="community-cards">
+          {communities.map(comm => (
+            <div
+              className="community-card"
+              key={comm.id}
+              tabIndex={0}
+              role="button"
+              aria-label={comm.name}
+            >
+              <div className="community-img-wrap">
+                <img src={comm.image} alt={comm.name} className="community-img" />
+              </div>
+              <div className="community-card-content">
+                <div className="community-card-title">{comm.name}</div>
+                <div className="community-card-creator">Created by {comm.creator}</div>
+                <div className="community-card-members">
+                  <span className="community-member-icon">👤</span>
+                  <span className="community-member-count">{comm.members} Members</span>
+                </div>
+                <button className="community-join-btn">Join</button>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
